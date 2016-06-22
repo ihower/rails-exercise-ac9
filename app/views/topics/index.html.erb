@@ -2,10 +2,16 @@
 
 <p><%= link_to "New Post", new_topic_path, :class => "btn btn-primary" %></p>
 
+<div id="content">
+</div>
+
 <table class="table">
 <% @topics.each do |t| %>
 <tr>
-  <td><%= link_to t.title, topic_path(t) %></td>
+  <td>
+      <%= link_to t.title, topic_path(t) %>
+      <%= link_to "preview", topic_path(t), :class => "preview btn btn-sm btn-default" %>
+  </td>
   <td><%= t.created_at %></td>
   <td>
     <%= link_to "Edit", edit_topic_path(t), :class => "btn btn-default" %>
@@ -17,3 +23,18 @@
 </table>
 
 <%= paginate @topics %>
+
+<script>
+  $(".preview").click(function(e){
+    e.preventDefault();
+
+    var url = $(this).attr("href")
+
+    $.ajax({
+        url: url,
+        success: function(data){
+            $("#content").html(data);
+        }
+    })
+  })
+</script>

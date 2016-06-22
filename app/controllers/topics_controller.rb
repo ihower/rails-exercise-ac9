@@ -8,6 +8,11 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find( params[:id] )
+
+    if request.xhr?
+      render :layout => false
+    end
+    
   end
 
   def new
@@ -21,7 +26,7 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new( topic_params )
     @topic.user = current_user
-    
+
     if @topic.save
       redirect_to topics_path
     else
