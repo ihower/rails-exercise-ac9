@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :like_topics, :through => :likes, :source => :topic
 
+  has_many :subscriptions
+  has_many :subscribe_topics, :through => :subscriptions, :source => :topic
+
 end

@@ -5,6 +5,9 @@ class Topic < ActiveRecord::Base
   has_many :likes
   has_many :liked_users, :through => :likes, :source => :user
 
+  has_many :subscriptions
+  has_many :subscribed_users, :through => :subscriptions, :source => :user
+
   validates_presence_of :title
 
   def find_my_like(user)
