@@ -1,12 +1,18 @@
 <h2>HERE!</h2>
 
-
 <%= link_to "load something", "#", :id => "ajax-load" %>
+
+<div id="content"></div>
 
 <script>
   $("#ajax-load").on("click", function(e){
 
-    alert("click!");
+    $.ajax({
+      url: "/something",
+      success: function(data) {
+        $("#content").html(data)
+      }
+    })
 
   });
 
