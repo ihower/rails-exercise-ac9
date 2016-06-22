@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
     if request.xhr?
       render :layout => false
     end
-    
+
   end
 
   def new
@@ -47,7 +47,10 @@ class TopicsController < ApplicationController
     @topic = Topic.find( params[:id] )
     @topic.destroy
 
-    redirect_to topics_path
+    respond_to do |format|
+      format.html { redirect_to topics_path }
+      format.js # destroy.js.erb
+    end
   end
 
   protected
