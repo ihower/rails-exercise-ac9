@@ -1,5 +1,7 @@
 class TopicsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @topics = Topic.order("id DESC").page(params[:page])
   end
@@ -18,7 +20,8 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new( topic_params )
-
+    @topic.user = current_user
+    
     if @topic.save
       redirect_to topics_path
     else
