@@ -10,7 +10,7 @@
 <tr id="topic-<%= t.id %>">
   <td>
       <%= link_to t.title, topic_path(t) %>
-      <%= link_to "preview", topic_path(t), :class => "preview btn btn-sm btn-default" %>
+      <%= link_to "preview", topic_path(t), :class => "preview btn btn-sm btn-default", :remote => true %>
   </td>
   <td><%= t.created_at %></td>
   <td>
@@ -23,18 +23,3 @@
 </table>
 
 <%= paginate @topics %>
-
-<script>
-  $(".preview").click(function(e){
-    e.preventDefault();
-
-    var url = $(this).attr("href")
-
-    $.ajax({
-        url: url,
-        success: function(data){
-            $("#content").html(data);
-        }
-    })
-  })
-</script>

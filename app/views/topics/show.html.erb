@@ -1,5 +1,1 @@
-<h3><%= @topic.title %></h3>
-
-<p>Author: <%= @topic.user.try(:email) %> </p>
-
-<%= simple_format @topic.content %>
+<%= render :partial => "content" %>

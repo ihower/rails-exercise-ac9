@@ -9,10 +9,10 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find( params[:id] )
 
-    if request.xhr?
-      render :layout => false
+    respond_to do |format|
+      format.html # show.html.erb
+      format.js  # show.js.erb
     end
-
   end
 
   def new
