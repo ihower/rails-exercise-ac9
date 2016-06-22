@@ -5,6 +5,14 @@
   <%= render :partial => "likes/like", :locals => { :like => like } %>
 </div>
 
+<% subscription = @topic.find_my_subscription(current_user) %>
+
+<% if subscription %>
+  <%= link_to "Unsubscribe", unsubscribe_topic_path(@topic), :class => "btn btn-primary", :method => :post %>
+<% else %>
+  <%= link_to "Subscribe", subscribe_topic_path(@topic), :class => "btn btn-primary", :method => :post %>
+<% end %>
+
 <p>Author: <%= @topic.user.try(:email) %> </p>
 
 <%= simple_format @topic.content %>

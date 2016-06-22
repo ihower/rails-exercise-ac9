@@ -53,6 +53,24 @@ class TopicsController < ApplicationController
     end
   end
 
+  def subscribe
+    @topic = Topic.find( params[:id] )
+    @subscription = @topic.find_my_subscription(current_user)
+    unless @subscription
+      @subscription = Subscription.create!( :topic => @topic, :user => current_user )
+    end
+
+    redirect_to :back
+  end
+
+  def unsubscribe
+    @topic = Topic.find( params[:id] )
+    @subscription = @topic.find_my_subscription(current_user)
+    @subscription.destroy
+
+    redirect_to :back
+  end
+
   protected
 
   def topic_params

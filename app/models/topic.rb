@@ -14,4 +14,8 @@ class Topic < ActiveRecord::Base
     self.likes.where( :user => user ).first
   end
 
+  def find_my_subscription(user)
+    self.subscriptions.where( :user => user ).first
+  end
+
 end

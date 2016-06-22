@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   resources :topics do
     resources :likes
+
+    member do
+      post :subscribe
+      post :unsubscribe
+    end
   end
 
   get "/demo" => "welcome#index"
