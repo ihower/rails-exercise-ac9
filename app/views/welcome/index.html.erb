@@ -2,9 +2,12 @@
 
 <%= link_to "load something", "#", :id => "ajax-load" %>
 
+<%= link_to "load script", something_path, :remote => true %>
+
 <div id="content"></div>
 
 <script>
+
   $("#ajax-load").on("click", function(e){
 
     $.ajax({
