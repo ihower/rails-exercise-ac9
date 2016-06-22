@@ -7,4 +7,8 @@ class Topic < ActiveRecord::Base
 
   validates_presence_of :title
 
+  def find_my_like(user)
+    self.likes.where( :user => user ).first
+  end
+
 end
