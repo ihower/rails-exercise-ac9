@@ -1,12 +1,9 @@
 <h3><%= @topic.title %></h3>
 
 <% like = @topic.find_my_like(current_user) %>
-
-<% if like %>
-  <%= link_to "-1", topic_like_path(@topic, like), :method => :delete, :class => "btn btn-danger" %>
-<% else %>
-  <%= link_to "+1", topic_likes_path(@topic), :method => :post, :class => "btn btn-primary" %>
-<% end %>
+<div id="like-block">
+  <%= render :partial => "likes/like", :locals => { :like => like } %>
+</div>
 
 <p>Author: <%= @topic.user.try(:email) %> </p>
 

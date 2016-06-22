@@ -4,16 +4,22 @@ class LikesController < ApplicationController
   before_action :set_topic
 
   def create
-    Like.create!( :topic => @topic, :user => current_user )
+    @like = @topic.find_my_like(current_user)
 
-    redirect_to :back
+    unless @like
+      @like = Like.create!( :topic => @topic, :user => current_user )
+    end
+
+    render "reload"
   end
 
   def destroy
-    like = @topic.likes.find( params[:id] )
-    like.destroy
+    @like = @topic.likes.find( params[:id] )
+    @like.destroy
 
-    redirect_to :back
+    @like = nil
+
+    render "reload"
   end
 
   protected
