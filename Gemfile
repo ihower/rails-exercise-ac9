@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'bootstrap-sass'
 
+gem "select2-rails"
+
 gem 'devise'
 
 gem 'kaminari'

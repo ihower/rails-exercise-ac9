@@ -14,6 +14,11 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :user_id %>
+    <%= f.select :user_id, User.all.map{ |u| [u.email, u.id] }, {}, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :content %>
     <%= f.text_area :content, :class => "form-control" %>
   </div>
@@ -23,3 +28,8 @@
   </div>
 
 <% end %>
+
+
+<script>
+  $("#topic_user_id").select2();  
+</script>
