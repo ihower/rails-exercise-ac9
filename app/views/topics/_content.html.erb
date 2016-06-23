@@ -1,6 +1,13 @@
 <h3><%= @topic.title %></h3>
 
+<h4>
+  <% @topic.categories.each do |c| %>
+    <span class="label label-success"><%= c.name %></span>
+  <% end %>
+</h4>
+
 <% like = @topic.find_my_like(current_user) %>
+
 <div id="like-block">
   <%= render :partial => "likes/like", :locals => { :like => like } %>
 </div>

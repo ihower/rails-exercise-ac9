@@ -6,10 +6,19 @@ namespace :dev do
     end
   end
 
-  task :fake => :environment do
+  task :fake_topics => :environment do
+    Topic.delete_all
+
+    categories = Category.all
+
     100.times do |i|
       puts "Generate #{i}"
-      Topic.create!( :title => Faker::Commerce.product_name, :content => Faker::Lorem.paragraph )
+      t = Topic.create!( :title => Faker::Commerce.product_name, :content => Faker::Lorem.paragraph )
+
+      categories.sample( rand(10) ).each do |g|
+        CategoryShip.create!( :topic => t, :category => g)
+      end
+
     end
   end
 
