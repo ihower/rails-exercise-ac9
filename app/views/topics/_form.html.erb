@@ -14,7 +14,10 @@
   </div>
 
   <div class="form-group">
-    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
+    <%= f.label :category_ids %>
+    <%#= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
+
+    <%= f.select :category_ids, Category.all.map{ |c| [c.name, c.id] }, {}, { :multiple => true, :class => "form-control" } %>
   </div>
 
   <div class="form-group">
@@ -36,4 +39,7 @@
 
 <script>
   $("#topic_user_id").select2();
+
+  $("#topic_category_ids").select2();
+
 </script>
