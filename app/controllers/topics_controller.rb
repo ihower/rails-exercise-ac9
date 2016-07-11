@@ -28,6 +28,9 @@ class TopicsController < ApplicationController
     @topic.user = current_user
 
     if @topic.save
+
+      HardWorkerJob.perform_later(@topic.id)
+
       redirect_to topics_path
     else
       render :new
