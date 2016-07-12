@@ -5,8 +5,13 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  resources :todos
-  
+  resources :todos do
+    collection do
+      get :v1
+      get :v2
+    end
+  end
+
   devise_for :users
 
   resources :topics do
