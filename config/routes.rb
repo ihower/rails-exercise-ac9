@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
+  resources :todos
   
   devise_for :users
 
