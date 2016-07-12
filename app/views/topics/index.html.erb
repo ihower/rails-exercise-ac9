@@ -11,6 +11,10 @@
   <td>
       <%= link_to t.title, topic_path(t) %>
       <%= link_to "preview", topic_path(t), :class => "preview btn btn-sm btn-default", :remote => true %>
+
+      <% t.likes.each do |like| %>
+        <%= like.try(:user).try(:email) %>
+      <% end %>
   </td>
   <td><%= t.created_at %></td>
   <td>
