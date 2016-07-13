@@ -1,12 +1,10 @@
-<h2>Todo SPA v2</h2>
-
-<input type="text" id="todo-input">
-<button id="todo-submit">Submit</button>
-
-<ul id="todo-list">
-</ul>
+<div id="content">
+</div>
 
 <script>
+  var todo_app = JST["templates/todo_app"]();
+  $("#content").html(todo_app);
+
   var App = {
     todos: [],
     init: function(){
@@ -62,7 +60,7 @@
     render: function(){
       $("#todo-list").html("");
       this.todos.forEach(function(todo){
-        var html = "<li data-id='" + todo["id"] + "'>" + todo["title"] + " <a class='remove'>remove</a></li>";
+        var html = JST["templates/todo"]( { todo: todo } );
         $("#todo-list").append(html);
       });
       $("#todo-input").val("");

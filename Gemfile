@@ -8,6 +8,7 @@ gem 'rails', '4.2.6'
 
 gem 'rack-mini-profiler'
 
+gem 'ejs'
 
 gem 'mysql2'
 
