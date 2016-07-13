@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     collection do
       get :v1
       get :v2
+      get :v3
     end
   end
 

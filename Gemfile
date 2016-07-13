@@ -10,6 +10,8 @@ gem 'rack-mini-profiler'
 
 gem 'ejs'
 
+gem 'vuejs-rails'
+
 gem 'mysql2'
 
 gem 'sidekiq'

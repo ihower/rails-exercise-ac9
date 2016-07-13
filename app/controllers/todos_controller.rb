@@ -10,6 +10,11 @@ class TodosController < ApplicationController
     @todos = Todo.all
   end
 
+  # Vue.js
+  def v3
+    @todos = Todo.all
+  end
+
   def index
     @todos = Todo.all
 
