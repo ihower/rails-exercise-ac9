@@ -1,1 +1,7 @@
-<li><%= message.content %></li>
+<li><%= message.content %>
+
+
+  <% if message.user %>
+  by <%= message.user.email %>
+  <% end %>
+</li>
