@@ -1,3 +1,4 @@
+<h2>Ajax</h2>
 <%= form_for Message.new, remote: true do |f|%>
 
   <%= f.label :content %>
@@ -7,8 +8,23 @@
 <%end%>
 
 
+<h2>Websocket</h2>
+
+<input type="text" id="message-input" placeholder="enter">
+
 <ul id="messages-list">
 <% @messages.each do |message| %>
   <%= render :partial => "message", :locals => { :message => message } %>
 <% end %>
 </ul>
+
+<script>
+
+  $("#message-input").on("keypress", function(evt){
+    if ( evt.keyCode == 13  ) {
+      App.messages.speak( evt.target.value )
+    }
+  })
+
+
+</script>
