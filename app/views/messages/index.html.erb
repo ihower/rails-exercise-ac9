@@ -9,6 +9,6 @@
 
 <ul id="messages-list">
 <% @messages.each do |message| %>
-  <li><%= message.content %></li>
+  <%= render :partial => "message", :locals => { :message => message } %>
 <% end %>
 </ul>

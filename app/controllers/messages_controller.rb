@@ -9,7 +9,10 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
-      ActionCable.server.broadcast "public_channel", { :content => @message.content }
+
+      html = ApplicationController.renderer.render( :partial => "messages/message", :locals => { :message => @message } )
+
+      ActionCable.server.broadcast "public_channel", { :html => html }
 
       render :json => { :id => @message.id }
     else
