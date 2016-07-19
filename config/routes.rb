@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get :v1
       get :v2
       get :v3
+      get :v4
     end
   end
 

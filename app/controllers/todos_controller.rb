@@ -15,6 +15,11 @@ class TodosController < ApplicationController
     @todos = Todo.all
   end
 
+  # react
+  def v4
+    @todos = Todo.all
+  end
+
   def index
     @todos = Todo.all
 

@@ -15,7 +15,8 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require select2
-
 //= require vue
 
-//= require_tree .
+//= require react
+//= require react_ujs
+//= require_tree ./components
