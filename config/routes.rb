@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   mount ActionCable.server => "/cable"
 
+  resources :messages
+
   require 'sidekiq/web'
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'

@@ -6,6 +6,8 @@ App.messages = App.cable.subscriptions.create("MessagesChannel", {
     console.log("disconnected");
   },
   received: function(data) {
-    alert( data.message );
+    console.log(data);
+    $("#messages-list").append( "<li>" + data.content + "</li>" );
+    $("#message_content").val("");
   }
 });

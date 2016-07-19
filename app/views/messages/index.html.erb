@@ -1,0 +1,14 @@
+<%= form_for Message.new, remote: true do |f|%>
+
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+
+  <%= f.submit "send", class: "btn btn-primary" %>
+<%end%>
+
+
+<ul id="messages-list">
+<% @messages.each do |message| %>
+  <li><%= message.content %></li>
+<% end %>
+</ul>
