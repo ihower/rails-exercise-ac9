@@ -16,6 +16,22 @@
 
 var todo_app = new Vue({
   el: '#todo-app',
+  ready: function(){
+    var that = this;
+
+    App.messages = App.cable.subscriptions.create("TodosChannel", {
+      connected: function() {
+        console.log("connected");
+      },
+      disconnected: function() {
+        console.log("disconnected");
+      },
+      received: function(todos) {
+        that.todos = todos;
+        that.new_todo_title = "";
+      }
+    });
+  },
   methods: {
     add: function(){
       console.log("abc")
@@ -28,11 +44,7 @@ var todo_app = new Vue({
             title: that.new_todo_title
           }
         },
-        dataType: "json",
-        success: function(data){
-          that.todos.push(data);
-          that.new_todo_title = "";
-        }
+        dataType: "json"
       })
     },
     remove: function(todo){
@@ -40,11 +52,7 @@ var todo_app = new Vue({
       $.ajax({
         url : "/todos/" + todo.id,
         type: "DELETE",
-        success: function(data){
-          that.todos = $.grep(that.todos, function(e){
-            return e.id != todo.id
-          });
-        }
+        dataType: "json"
       })
     }
   },
