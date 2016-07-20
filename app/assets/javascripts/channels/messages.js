@@ -8,7 +8,7 @@ App.messages = App.cable.subscriptions.create("MessagesChannel", {
 
   // ActionCable.server.broadcast "public_room", :content => "hello"
   received: function(data) {
-    $("#message-list").append( "<li>" + data.content + "</li>");
+    $("#message-list").append( data.html );
     $("#message_content").val("");
   }
 });

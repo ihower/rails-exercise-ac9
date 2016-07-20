@@ -10,7 +10,5 @@
 <% end %>
 
 <ul id="message-list">
-<% @messages.each do |m| %>
-  <li><%= m.content %></li>
-<% end %>
+  <%= render :partial => "message", :collection => @messages, :as => :message %>
 </ul>

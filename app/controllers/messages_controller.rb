@@ -9,8 +9,9 @@ class MessagesController < ApplicationController
 
     @message.save
 
-    ActionCable.server.broadcast "public_room", @message.as_json
-    
+    html = ApplicationController.renderer.render( :partial => "messages/message", :locals => { :message => @message } )
+
+    ActionCable.server.broadcast "public_room", { :html => html }
   end
 
   protected
