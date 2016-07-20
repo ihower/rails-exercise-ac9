@@ -1,5 +1,6 @@
 <h2>Real-time Messages</h2>
 
+<h3>Ajax</h3>
 <%= form_for Message.new, :remote => true do |f| %>
 
   <%= f.label :content %>
@@ -9,6 +10,19 @@
 
 <% end %>
 
+<h3>WebSocket</h3>
+
+<input type="text" id="content-input" %>
+
 <ul id="message-list">
   <%= render :partial => "message", :collection => @messages, :as => :message %>
 </ul>
+
+<script>
+  $("#content-input").on("keypress", function(event){
+    if (event.keyCode == 13 ) {
+        //alert( event.target.value )
+        App.messages.speak( event.target.value );
+    }
+  })
+</script>
