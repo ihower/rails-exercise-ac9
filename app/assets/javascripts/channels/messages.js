@@ -7,7 +7,7 @@ App.messages = App.cable.subscriptions.create("MessagesChannel", {
   },
   received: function(data) {
     console.log(data);
-    $("#messages-list").append( data.html );
+    $("#messages-list").prepend( data.html );
     $("#message_content").val("");
   },
 
