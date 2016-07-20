@@ -29,6 +29,9 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new( todo_params )
     if @todo.save
+
+      ActionCable.server.broadcast "todos_channel", Todo.all.as_json
+
       render :json => @todo
     else
       render :json => { :message => "err"}, :status => 400
@@ -38,6 +41,8 @@ class TodosController < ApplicationController
   def destroy
     @todo = Todo.find(params[:id])
     @todo.destroy
+
+    ActionCable.server.broadcast "todos_channel", Todo.all.as_json
 
     render :json => { :message => "ok" }
   end
