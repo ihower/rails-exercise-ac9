@@ -142,6 +142,7 @@ GEM
       pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
     pkg-config (1.1.7)
+    puma (3.4.0)
     rack (2.0.1)
     rack-mini-profiler (0.10.1)
       rack (>= 1.2.0)
@@ -277,6 +278,7 @@ DEPENDENCIES
   kaminari
   listen
   mysql2
+  puma
   rack-mini-profiler
   rails (= 5.0.0)
   react-rails

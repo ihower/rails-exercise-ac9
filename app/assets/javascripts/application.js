@@ -20,3 +20,6 @@
 //= require react
 //= require react_ujs
 //= require_tree ./components
+
+//= require cable
+//= require_tree ./channels
